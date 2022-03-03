@@ -16,7 +16,7 @@ fun printDelim() {
 }
 
 fun calculationOfTheAmount(money: Int, commissionMoney: Double) {
-    var amount: Double
+    val amount: Double
     if (money > 0) {
         if (commissionMoney < VALUE_COMMISSION) {
             amount = (money + VALUE_COMMISSION).toDouble()
