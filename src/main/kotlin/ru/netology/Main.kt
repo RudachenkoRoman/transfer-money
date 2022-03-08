@@ -1,13 +1,25 @@
 package ru.netology
 
+import kotlin.math.ceil
+
 const val VALUE_COMMISSION = 35
 const val PERCENT_COMMISSION: Double = 0.75
 
-fun main() {
+fun main(){
     printDelim()
     val money = readLine()?.toInt() ?: return
-    val commissionMoney: Double = money / 100 * PERCENT_COMMISSION
-    calculationOfTheAmount(money, commissionMoney)
+
+    if (money > 0) {
+        val commissionMoney: Double = money / 100 * PERCENT_COMMISSION
+        val commission = if(commissionMoney > VALUE_COMMISSION) {commissionMoney}
+        else {VALUE_COMMISSION}
+        val amount = if (commissionMoney > VALUE_COMMISSION) {money + commissionMoney}
+        else {(money + VALUE_COMMISSION).toDouble()}
+        println("Комиссия сотавила ${commission.toInt()} копеек")
+        println("Сумма перевода с учетом комиссии сотавит ${ceil(amount).toInt()} копеек")
+    }else {
+        println("Вы ввели неверную сумму. Сумма должна быть больше 0")
+    }
 }
 
 fun printDelim() {
@@ -15,19 +27,3 @@ fun printDelim() {
     println("Введите сумму в копейках")
 }
 
-fun calculationOfTheAmount(money: Int, commissionMoney: Double) {
-    val amount: Double
-    if (money > 0) {
-        if (commissionMoney < VALUE_COMMISSION) {
-            amount = (money + VALUE_COMMISSION).toDouble()
-            println("Комиссия сотавила $VALUE_COMMISSION копеек")
-            println("Сумма перевода сотавит ${amount.toInt()} копеек")
-        } else {
-            amount = money + commissionMoney
-            println("Комиссия сотавила $commissionMoney копеек")
-            println("Сумма перевода сотавит $amount копеек")
-        }
-    } else {
-        println("Вы ввели неверную сумму. Сумма должна быть больше 0")
-    }
-}
