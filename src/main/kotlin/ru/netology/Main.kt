@@ -12,12 +12,13 @@ fun main() {
 
     if (money <= 0) {
         println("Вы ввели неверную сумму. Сумма должна быть больше 0")
-    } else {
-        var commissionMoney: Double = money / 100 * PERCENT_COMMISSION
-        if (commissionMoney < VALUE_COMMISSION) commissionMoney = VALUE_COMMISSION
-        val amount = money + commissionMoney
-        println("Комиссия сотавила ${ceil(commissionMoney).toInt()} копеек")
-        println("Сумма перевода с учетом комиссии сотавит ${ceil(amount).toInt()} копеек")
+        return
     }
+    var commissionMoney: Double = money / 100 * PERCENT_COMMISSION
+    if (commissionMoney < VALUE_COMMISSION) commissionMoney = VALUE_COMMISSION
+    val amount = money + commissionMoney
+    println("Комиссия сотавила ${ceil(commissionMoney).toInt()} копеек")
+    println("Сумма перевода с учетом комиссии сотавит ${ceil(amount).toInt()} копеек")
+
 }
 
